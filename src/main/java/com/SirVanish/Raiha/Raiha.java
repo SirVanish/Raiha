@@ -59,7 +59,5 @@ public class Raiha extends ListenerAdapter
 		User objUser = evt.getAuthor();
 		MessageChannel objMsgCh = evt.getChannel();
 		Message objMsg = evt.getMessage();
-		
-		
 	}
 }
