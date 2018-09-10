@@ -16,6 +16,10 @@
 
 package com.SirVanish.Raiha;
 
+import java.util.Scanner;
+
+import javax.security.auth.login.LoginException;
+
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -27,11 +31,19 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class Raiha extends ListenerAdapter
 {
+	// Error exit codes
+	public static final int NO_LOGIN = 100;
+	public static final int BAD_LOGIN = 101;
+	public static final int CANNOT_CONNECT = 102;
+	public static final int UNKNOWN_ERROR = 111;
+	
+	// JDA
 	private static JDA api;
+	private static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) throws Exception
 	{
-		setupBot();
+		runBot();
 	}
 	
 	public static JDA getAPI()
@@ -39,25 +51,40 @@ public class Raiha extends ListenerAdapter
 		return api;
 	}
 	
-	private static void setupBot()
+	private static void runBot()
 	{
 		try
 		{
-			api = new JDABuilder(AccountType.BOT).setToken(Settings.token).build();
-			System.out.println("Bot has successfully finished settingup!");
+			Settings config = new Settings();
+			
+			// Will ask user to input their token and close scanner afterwards
+			System.out.print("Please insert your bot token: ");
+			String token = scanner.next();
+			config.setToken(token);
+			scanner.close();
+			
+			JDABuilder builder = new JDABuilder(AccountType.BOT).setToken(config.getToken());
+//			builder.addEventListener();
+			
+			api = builder.build();
+			
+			System.out.println("Bot has successfully finished setup process!");
+		}
+		
+		catch (IllegalArgumentException e)
+		{
+			System.out.println("Login details are not provided.\n" + e);
+			System.exit(NO_LOGIN);
+		}
+		catch (LoginException e)
+		{
+			System.out.println("Login details are incorrect.\n" + e);
+			System.exit(BAD_LOGIN);
 		}
 		catch (Exception e)
 		{
-			System.out.println("Unable to set up bot! Exception: " + e);
-			System.exit(1);
+			System.out.println("Unable to set up bot!\n" + e);
+			System.exit(UNKNOWN_ERROR);
 		}
-	}
-	
-	public void onMessageRecieved(MessageReceivedEvent evt)
-	{
-		// Objects
-		User objUser = evt.getAuthor();
-		MessageChannel objMsgCh = evt.getChannel();
-		Message objMsg = evt.getMessage();
 	}
 }
