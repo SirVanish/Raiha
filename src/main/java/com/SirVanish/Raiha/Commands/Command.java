@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.SirVanish.Raiha.Raiha;
 
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -23,6 +24,16 @@ public abstract class Command extends ListenerAdapter
 			if (containsCommand(e.getMessage()))
 				onCommand(e, commandArgs(e.getMessage()));
 	}
+	
+	protected Message sendMessage(MessageReceivedEvent e, Message message)
+	{
+		return e.getTextChannel().sendMessage(message).complete();
+	}
+	protected Message sendMessage(MessageReceivedEvent e, String message)
+	{
+		return sendMessage(e, new MessageBuilder().append(message).build());
+	}
+	
 	
 	// Should Raiha respond to other bots?
 	protected boolean respondToBots()

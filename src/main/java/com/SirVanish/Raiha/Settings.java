@@ -6,7 +6,7 @@ public class Settings
 	private String token;
 	
 	// Bot prefix
-	private String prefix;
+	private String prefix = "Raiha,";
 	
 	// Default Settings constructor
 	public Settings()
