@@ -23,10 +23,6 @@ import javax.security.auth.login.LoginException;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageChannel;
-import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class Raiha extends ListenerAdapter
@@ -40,6 +36,7 @@ public class Raiha extends ListenerAdapter
 	// JDA
 	private static JDA api;
 	private static Scanner scanner = new Scanner(System.in);
+	private static Settings config;
 	
 	public static void main(String[] args) throws Exception
 	{
@@ -50,12 +47,16 @@ public class Raiha extends ListenerAdapter
 	{
 		return api;
 	}
+	public static Settings getConfig()
+	{
+		return config;
+	}
 	
 	private static void runBot()
 	{
 		try
 		{
-			Settings config = new Settings();
+			config = new Settings();
 			
 			// Will ask user to input their token and close scanner afterwards
 			System.out.print("Please insert your bot token: ");
