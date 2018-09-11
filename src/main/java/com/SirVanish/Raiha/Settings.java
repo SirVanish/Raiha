@@ -3,8 +3,43 @@ package com.SirVanish.Raiha;
 public class Settings 
 {
 	// Bot token
-	public static final String token = "";
+	private String token;
 	
-	//Bot prefix to call for bot
-	public static final String prefix = "";
+	// Bot prefix
+	private String prefix;
+	
+	// Default Settings constructor
+	public Settings()
+	{
+		this.setToken("");
+		this.setPrefix("Raiha,");
+	}
+	// Specifying Settings constructor
+	public Settings(String token, String prefix)
+	{
+		this.setToken(token);
+		this.setPrefix(prefix);
+	}
+	
+	// Token accessor
+	public String getToken()
+	{
+		return token;
+	}
+	// Token mutator
+	public void setToken(String token)
+	{
+		this.token = token;
+	}
+	
+	// Prefix accessor
+	public String getPrefix()
+	{
+		return prefix;
+	}
+	// Prefix mutator
+	public void setPrefix(String prefix)
+	{
+		this.prefix = prefix;
+	}
 }
