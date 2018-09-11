@@ -48,6 +48,7 @@ public abstract class Command extends ListenerAdapter
 	// Will call the Command's class and function according to the Command
 	protected boolean containsCommand(Message message)
 	{
+		System.out.println("checking command");
 		return getAliases().contains(commandArgs(message)[1]);
 	}
 	

@@ -6,13 +6,13 @@ public class Settings
 	private String token;
 	
 	// Bot prefix
-	private String prefix = "Raiha,";
+	private String prefix;
 	
 	// Default Settings constructor
 	public Settings()
 	{
 		this.setToken("");
-		this.setPrefix("");
+		this.setPrefix("Raiha,");
 	}
 	// Specifying Settings constructor
 	public Settings(String token, String prefix)
