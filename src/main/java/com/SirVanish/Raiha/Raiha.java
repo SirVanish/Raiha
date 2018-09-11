@@ -20,8 +20,10 @@ import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
 
+import com.SirVanish.Raiha.Commands.CoinCommand;
 import com.SirVanish.Raiha.Commands.CommandTree;
 import com.SirVanish.Raiha.Commands.PingCommand;
+import com.SirVanish.Raiha.Commands.RollCommand;
 
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -70,7 +72,10 @@ public class Raiha extends ListenerAdapter
 			CommandTree commands = new CommandTree();
 			
 			JDABuilder builder = new JDABuilder(AccountType.BOT).setToken(config.getToken());
+			
 			builder.addEventListener(commands.addCommand(new PingCommand()));
+			builder.addEventListener(commands.addCommand(new RollCommand()));
+			builder.addEventListener(commands.addCommand(new CoinCommand()));
 			
 			api = builder.build();
 			
