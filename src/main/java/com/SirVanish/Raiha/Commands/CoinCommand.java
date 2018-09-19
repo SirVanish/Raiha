@@ -23,5 +23,17 @@ public class CoinCommand extends Command
 	{
 		return Arrays.asList("flip", "coin");
 	}
+
+	@Override
+	public String getName() 
+	{
+		return "Coin Command";
+	}
+
+	@Override
+	public String getDescription() 
+	{
+		return "Flips a coin";
+	}
 	
 }
