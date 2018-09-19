@@ -20,5 +20,17 @@ public class RollCommand extends Command
 	{
 		return Arrays.asList("roll", "dice");
 	}
+
+	@Override
+	public String getName() 
+	{
+		return "Dice Roll Command";
+	}
+
+	@Override
+	public String getDescription() 
+	{
+		return "Rolls a dice";
+	}
 	
 }
