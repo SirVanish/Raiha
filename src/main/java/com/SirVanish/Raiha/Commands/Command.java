@@ -12,7 +12,9 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public abstract class Command extends ListenerAdapter
 {
 	public abstract void onCommand(MessageReceivedEvent e, String [] args);		// Function of the command
-	public abstract List<String> getAliases();									// Command lists
+	public abstract List<String> getAliases();									// Command list of aliases
+	public abstract String getName();
+	public abstract String getDescription();
 	
 	// Checks if message received is in Command list
 	@Override

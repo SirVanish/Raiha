@@ -17,7 +17,18 @@ public class HelpCommand extends Command
 	@Override
 	public List<String> getAliases() 
 	{
-		return Arrays.asList("help");
+		return Arrays.asList("help", "commands");
 	}
-	
+
+	@Override
+	public String getName() 
+	{
+		return "Help Command";
+	}
+
+	@Override
+	public String getDescription() 
+	{
+		return "Gets information of all commands.";
+	}
 }

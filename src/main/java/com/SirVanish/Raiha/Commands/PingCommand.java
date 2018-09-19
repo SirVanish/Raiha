@@ -19,5 +19,17 @@ public class PingCommand extends Command
 	{
 		return Arrays.asList("ping");
 	}
+
+	@Override
+	public String getName() 
+	{
+		return "Ping Command";
+	}
+
+	@Override
+	public String getDescription() 
+	{
+		return "Pong!";
+	}
 	
 }
