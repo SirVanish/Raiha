@@ -5,31 +5,30 @@ import java.util.List;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class PingCommand extends Command
+public class HelpCommand extends Command
 {
 
 	@Override
 	public void onCommand(MessageReceivedEvent e, String[] args) 
 	{
-		sendMessage(e, "pong!");
+		sendMessage(e, "This is the help command");
 	}
 
 	@Override
 	public List<String> getAliases() 
 	{
-		return Arrays.asList("ping");
+		return Arrays.asList("help", "commands");
 	}
 
 	@Override
 	public String getName() 
 	{
-		return "Ping Command";
+		return "Help Command";
 	}
 
 	@Override
 	public String getDescription() 
 	{
-		return "Pong!";
+		return "Gets information of all commands.";
 	}
-	
 }

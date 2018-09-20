@@ -5,31 +5,32 @@ import java.util.List;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class PingCommand extends Command
+public class RollCommand extends Command
 {
 
 	@Override
 	public void onCommand(MessageReceivedEvent e, String[] args) 
 	{
-		sendMessage(e, "pong!");
+		int die = (int) (Math.random() * 5 + 1);
+		sendMessage(e, "Rolled a " + die);
 	}
 
 	@Override
 	public List<String> getAliases() 
 	{
-		return Arrays.asList("ping");
+		return Arrays.asList("roll", "dice");
 	}
 
 	@Override
 	public String getName() 
 	{
-		return "Ping Command";
+		return "Dice Roll Command";
 	}
 
 	@Override
 	public String getDescription() 
 	{
-		return "Pong!";
+		return "Rolls a dice";
 	}
 	
 }

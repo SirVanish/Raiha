@@ -20,8 +20,11 @@ import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
 
+import com.SirVanish.Raiha.Commands.CoinCommand;
 import com.SirVanish.Raiha.Commands.CommandTree;
+import com.SirVanish.Raiha.Commands.HelpCommand;
 import com.SirVanish.Raiha.Commands.PingCommand;
+import com.SirVanish.Raiha.Commands.RollCommand;
 
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -64,13 +67,17 @@ public class Raiha extends ListenerAdapter
 			// Will ask user to input their token and close scanner afterwards
 			System.out.print("Please insert your bot token: ");
 			String token = scanner.next();
-			config.setToken(token);
+			config.sendToken(token);
 			scanner.close();
 			
 			CommandTree commands = new CommandTree();
 			
 			JDABuilder builder = new JDABuilder(AccountType.BOT).setToken(config.getToken());
+			
+			builder.addEventListener(commands.addCommand(new HelpCommand()));
 			builder.addEventListener(commands.addCommand(new PingCommand()));
+			builder.addEventListener(commands.addCommand(new RollCommand()));
+			builder.addEventListener(commands.addCommand(new CoinCommand()));
 			
 			api = builder.build();
 			
