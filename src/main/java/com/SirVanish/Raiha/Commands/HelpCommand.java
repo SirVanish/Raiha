@@ -11,7 +11,7 @@ public class HelpCommand extends Command
 	@Override
 	public void onCommand(MessageReceivedEvent e, String[] args) 
 	{
-		
+		sendMessage(e, "This is the help command");
 	}
 
 	@Override

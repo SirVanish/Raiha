@@ -1,5 +1,6 @@
 package com.SirVanish.Raiha.Commands;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -13,7 +14,6 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class CommandTree extends Command
 {
 	private TreeMap<String, Command> commands;
-	public HelpCommand help = new HelpCommand();
 	
 	public CommandTree()
 	{
@@ -36,14 +36,15 @@ public class CommandTree extends Command
 	@Override
 	public void onCommand(MessageReceivedEvent e, String[] args) 
 	{
-		help.onCommand(e, args);
+		// Does nothing
 	}
 
 	// Grabs the commands required for help from HelpCommand class
 	@Override
 	public List<String> getAliases() 
 	{
-		return help.getAliases();
+		// Adds nothing
+		return Arrays.asList();
 	}
 
 	@Override

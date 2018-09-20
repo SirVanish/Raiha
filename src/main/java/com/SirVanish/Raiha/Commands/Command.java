@@ -22,7 +22,7 @@ public abstract class Command extends ListenerAdapter
 	{
 		if (e.getAuthor().isBot() && !respondToBots())
 			return;
-		if (containsPrefix(e.getMessage()))
+		if (containsPrefix(e.getMessage()) || containsRaiha(e.getMessage()))
 			if (containsCommand(e.getMessage()))
 				onCommand(e, commandArgs(e.getMessage()));
 	}
@@ -46,6 +46,11 @@ public abstract class Command extends ListenerAdapter
 	protected boolean containsPrefix(Message message)
 	{
 		return commandArgs(message)[0].equalsIgnoreCase(Raiha.getConfig().getPrefix());
+	}
+	// Checks if the message contains bot's name
+	protected boolean containsRaiha(Message message)
+	{
+		return commandArgs(message)[0].equalsIgnoreCase(Raiha.getConfig().getRaiha());
 	}
 	// Will call the Command's class and function according to the Command
 	protected boolean containsCommand(Message message)
